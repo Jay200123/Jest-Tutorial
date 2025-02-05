@@ -1,0 +1,117 @@
+import { sum, subtract, multiply, calculateRectangleArea } from "./index";
+import { describe, test, expect } from "@jest/globals";
+
+//toBe handles primitive values like numbers, strings, booleans, null, undefined, etc.
+
+describe("Sum function", () => {
+  test("should return 3", () => {
+    const res = sum(1, 2);
+    expect(res).toBe(3);
+  });
+});
+
+describe("Subtract function", () => {
+  test("should return 5", () => {
+    const res = subtract(10, 5);
+    expect(res).toBe(5);
+  });
+});
+
+describe("Multiply function", () => {
+  test("should return 25", () => {
+    const res = multiply(5, 5);
+    expect(res).toBe(25);
+  });
+});
+
+describe("Calculating Rectangle Area", () => {
+  test("should return 1800", () => {
+    const res = calculateRectangleArea(30, 60);
+    expect(res).toBe(1800);
+  });
+});
+
+//toEqual is used to check the equality of objects. It calls Object.is to compare values.
+describe("Object Assignment", () => {
+  const data = { one: 1 };
+  data["two"] = 2;
+  test("should return {one: 1, two: 2}", () => {
+    expect(data).toEqual({ one: 1, two: 2 });
+  });
+});
+
+describe("Array assignment", () => {
+  test("should return a [1, 2, 3]", () => {
+    const a = [1, 2];
+    a.push(3);
+    expect(a).toEqual([1, 2, 3]);
+  });
+});
+
+describe("Array pop", () => {
+  test("should return 3", () => {
+    const a = [1, 2, 3];
+    //toBe is used in primitive values in an object or arrays
+    expect(a.pop()).toBe(3);
+  });
+});
+
+describe("Array Object Pop", () => {
+  test("Expects the user to be James Doe", () => {
+    const users = [
+      {
+        name: "John Doe",
+        age: 23,
+      },
+      {
+        name: "Jane Doe",
+        age: 24,
+      },
+      {
+        name: "James Doe",
+        age: 25,
+      },
+    ];
+
+    //toEqual is used to check the equality of objects. It calls Object.is to compare values.
+    const user = users.pop();
+    expect(user).toEqual({
+      name: "James Doe",
+      age: 25,
+    });
+  });
+});
+
+describe("Push Array", () => {
+  test("Pushing a product object to products array", () => {
+    const products = [
+      {
+        name: "Product 1",
+        price: 100,
+      },
+      {
+        name: "Product 2",
+        price: 200,
+      },
+    ];
+
+    products.push({
+      name: "Product 3",
+      price: 300,
+    });
+    expect(products).toEqual([
+      {
+        name: "Product 1",
+        price: 100,
+      },
+      {
+        name: "Product 2",
+        price: 200,
+      },
+      {
+        name: "Product 3",
+        price: 300,
+      },
+    ]);
+  });
+});
