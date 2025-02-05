@@ -1,0 +1,33 @@
+import { describe, test, expect } from "@jest/globals";
+import { fetchData } from ".";
+
+describe("Testing truthiness", () => {
+  const n = 0;
+  test("null is falsey", () => {
+    expect(n).toBeFalsy();
+  });
+
+  const s = 1;
+  test("s is truthy", () => {
+    expect(s).toBeTruthy();
+  });
+
+  const a = 1;
+  //this test should throw an failed testing
+  test("A is falsy", () => {
+    // expect(a).toBeFalsy(); throws an error since a is truthy
+    expect(a).toBeTruthy();
+  });
+
+  test("the data is peanut butter", (done) => {
+    function callback(data: any) {
+      try {
+        expect(data).toBe("peanut butter");
+        done();
+      } catch (error) {
+        done(error);
+      }
+    }
+    fetchData(callback);
+  });
+});
