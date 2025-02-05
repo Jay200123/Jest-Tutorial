@@ -625,4 +625,33 @@ describe("Testing Fake APi", () => {
       body: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
     });
   });
+  test("Create Post", async () => {
+    const res = await FakePostAPI.createPost({
+      userId: 1,
+      id: 101,
+      title: "test",
+      body: "test",
+    });
+    expect(res).toEqual({
+      userId: 1,
+      id: 101,
+      title: "test",
+      body: "test",
+    });
+  });
+
+  test("Update Post", async () => {
+    const res = await FakePostAPI.updatePost(1, {
+      userId: 1,
+      id: 1,
+      title: "test",
+      body: "test",
+    });
+    expect(res).toEqual({
+      userId: 1,
+      id: 1,
+      title: "test",
+      body: "test",
+    });
+  });
 });
